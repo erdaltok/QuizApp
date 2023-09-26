@@ -32,3 +32,7 @@ let questions = [
     "right_answer": 4
     }  
 ];
+
+function init() {
+    
+}
