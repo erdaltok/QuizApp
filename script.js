@@ -45,11 +45,10 @@ let questions = [
 let currentQuestion = 0;
 let rightQuestions = 0;
 
-
 function init() {
-    document.getElementById('all-questions').innerHTML = questions.length;
+  document.getElementById("all-questions").innerHTML = questions.length;
 
-    showQuestion();
+  showQuestion();
 }
 
 function showQuestion() {
@@ -62,17 +61,17 @@ function showQuestion() {
     document.getElementById("amount-of-right-questions").innerHTML =
       rightQuestions;
     document.getElementById("header-image").src = "./img/trophy.png";
+    document.getElementById("header-image").className = "endscreen-img";
   } else {
     // Show question
 
-    let percent = currentQuestion / questions.length;
+    let percent = (currentQuestion + 1) / questions.length;
     percent = Math.round(percent * 100);
-    
-    document.getElementById('progress-bar').innerHTML = `${percent} %`;
-    document.getElementById('progress-bar').style = `width: ${percent}%`;
 
+    document.getElementById("progress-bar").innerHTML = `${percent} %`;
+    document.getElementById("progress-bar").style = `width: ${percent}%`;
 
-    console.log('Fortschritt:', percent);
+    console.log("Fortschritt:", percent);
 
     let question = questions[currentQuestion];
 
@@ -86,35 +85,47 @@ function showQuestion() {
 }
 
 function answer(selection) {
-    let question = questions[currentQuestion];
-    let selectedQuestionNumber = selection.slice(-1);
-    let idOfRightAnswer = `answer_${question['right_answer']}`;
+  let question = questions[currentQuestion];
+  let selectedQuestionNumber = selection.slice(-1);
+  let idOfRightAnswer = `answer_${question["right_answer"]}`;
 
-    if (selectedQuestionNumber == question['right_answer']) {
-      document.getElementById(selection).parentNode.classList.add('bg-success');
-      rightQuestions++;
-    } else {
-        document.getElementById(selection).parentNode.classList.add('bg-danger');
-        document.getElementById(idOfRightAnswer).parentNode.classList.add('bg-success');
-    }
-    document.getElementById('next-button').disabled = false;
+  if (selectedQuestionNumber == question["right_answer"]) {
+    document.getElementById(selection).parentNode.classList.add("bg-success");
+    rightQuestions++;
+  } else {
+    document.getElementById(selection).parentNode.classList.add("bg-danger");
+    document
+      .getElementById(idOfRightAnswer)
+      .parentNode.classList.add("bg-success");
+  }
+  document.getElementById("next-button").disabled = false;
 }
 
 function nextQuestion() {
-    currentQuestion++;
-    document.getElementById("next-button").disabled = true;
-    resetAnswerButtons();
-    showQuestion();
+  currentQuestion++;
+  document.getElementById("next-button").disabled = true;
+  resetAnswerButtons();
+  showQuestion();
 }
 
 function resetAnswerButtons() {
-        document.getElementById("answer_1").parentNode.classList.remove("bg-danger");
-        document.getElementById("answer_1").parentNode.classList.remove("bg-success");
-        document.getElementById("answer_2").parentNode.classList.remove("bg-danger");
-        document.getElementById("answer_2").parentNode.classList.remove("bg-success");
-        document.getElementById("answer_3").parentNode.classList.remove("bg-danger");
-        document.getElementById("answer_3").parentNode.classList.remove("bg-success");
-        document.getElementById("answer_4").parentNode.classList.remove("bg-danger");
-        document.getElementById("answer_4").parentNode.classList.remove("bg-success");
+  document.getElementById("answer_1").parentNode.classList.remove("bg-danger");
+  document.getElementById("answer_1").parentNode.classList.remove("bg-success");
+  document.getElementById("answer_2").parentNode.classList.remove("bg-danger");
+  document.getElementById("answer_2").parentNode.classList.remove("bg-success");
+  document.getElementById("answer_3").parentNode.classList.remove("bg-danger");
+  document.getElementById("answer_3").parentNode.classList.remove("bg-success");
+  document.getElementById("answer_4").parentNode.classList.remove("bg-danger");
+  document.getElementById("answer_4").parentNode.classList.remove("bg-success");
 }
 
+function restartGame() {
+  document.getElementById("header-image").src = "./img/question-mark.jpg";
+  document.getElementById("questionBody").style = "";
+  document.getElementById("endScreen").style = "display: none";
+  document.getElementById("header-image").className = "card-img-top";
+
+  currentQuestion = 0;
+  rightQuestions = 0;
+  init();
+}

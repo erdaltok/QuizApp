@@ -11,24 +11,25 @@ body {
     align-items: center;
 }
 
-.quiz-card{
+.quiz-card {
     width: 30rem;
 }
 
-.question-footer{
+.question-footer {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    border-top:  1px solid rgba(0,0,0,0.4);
+    border-top: 1px solid rgba(0, 0, 0, 0.4);
     padding-top: 12px;
 }
 
 .quiz-answer-card:hover {
     cursor: pointer;
-    background-color: rgba(0,0,0 ,0.05);
+    background-color: rgba(0, 0, 0, 0.05);
 }
 
-.bg-success, .bg-danger {
+.bg-success,
+.bg-danger {
     color: white !important;
 }
 
@@ -43,4 +44,18 @@ body {
 .final-headline {
     font-size: 38px;
     margin-bottom: 32px;
+}
+
+.button-row {
+    display: flex;
+    justify-content: center;
+    margin-top: 24px;
+}
+
+.endscreen-img {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 88%;
+    padding: 20px;
 }
