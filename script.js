@@ -8,11 +8,12 @@ let questions = [
     right_answer: 3,
   },
   {
-    question: "Welches Attribut kann man NICHT für Textarea verwenden?",
-    answer_1: "readonly",
-    answer_2: "max",
-    answer_3: "from",
-    answer_4: "spellcheck",
+    question:
+      "Welches Event wird ausgelöst, wenn ein HTML-Formular abgeschickt wird?",
+    answer_1: "onsubmit",
+    answer_2: "onclick",
+    answer_3: "onchange",
+    answer_4: "onformsubmit",
     right_answer: 1,
   },
   {
@@ -24,11 +25,12 @@ let questions = [
     right_answer: 3,
   },
   {
-    question: "Wie wählst du alle Elemente vom Typ <div> mit dem Attribut title aus?",
-    answer_1: "div[title]{...}",
-    answer_2: "div > title {...}",
-    answer_3: "div.title {...}",
-    answer_4: "div-title {...}",
+    question:
+      "Welche CSS-Eigenschaft wird verwendet, um den inneren Abstand eines Elements zu setzen?",
+    answer_1: "padding",
+    answer_2: "margin",
+    answer_3: "border",
+    answer_4: "spacing",
     right_answer: 1,
   },
   {
@@ -38,6 +40,30 @@ let questions = [
     answer_3: "rate - 100;",
     answer_4: "let rate = 100;",
     right_answer: 4,
+  },
+  {
+    question: "Was ist das Ergebnis von 5 + '5' in JavaScript?",
+    answer_1: "'55'",
+    answer_2: "10",
+    answer_3: "NaN",
+    answer_4: "'5'5'",
+    right_answer: 1,
+  },
+  {
+    question: "Was bewirkt die JavaScript-Methode 'splice()'?",
+    answer_1: "Es fügt ein Element an den Anfang eines Arrays hinzu.",
+    answer_2: "Es entfernt Elemente aus einem Array und gibt sie zurück.",
+    answer_3: "Es sortiert die Elemente in einem Array in aufsteigender Reihenfolge.",
+    answer_4: "Es kopiert alle Elemente aus einem Array in ein neues Array.",
+    right_answer: 2,
+  },
+  {
+    question: "Welche Funktion wird verwendet, um einen Wert in eine ganze Zahl in JavaScript umzuwandeln?",
+    answer_1: "parseInt()",
+    answer_2: "toFloat()",
+    answer_3: "toInteger()",
+    answer_4: "parseInteger()",
+    right_answer: 1,
   },
 ];
 

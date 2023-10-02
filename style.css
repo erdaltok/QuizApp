@@ -1,10 +1,10 @@
 body {
-    background-color: #007AFF !important;
+    background-color:rgb(32, 38, 39) !important;
 }
 
 
 .container {
-    background-color: #007AFF !important;
+    background-color: rgb(32, 38, 39) !important;
     min-height: 100vh;
     display: flex;
     justify-content: center;
@@ -13,6 +13,10 @@ body {
 
 .quiz-card {
     width: 30rem;
+}
+
+.btn {
+    color: white !important;
 }
 
 .question-footer {
