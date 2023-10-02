@@ -16,7 +16,7 @@ let questions = [
     right_answer: 1,
   },
   {
-    question: "Was bedeutet das HTML Tag <a>?",
+    question: "Was bedeutet das HTML Tag < a >?",
     answer_1: "Text Fett",
     answer_2: "Container",
     answer_3: "Ein Link",
@@ -24,12 +24,11 @@ let questions = [
     right_answer: 3,
   },
   {
-    question:
-      "Wie wählst du alle Elemente vom Typ $%(%(& mit dem attribut title aus?",
-    answer_1: "a[title]{...}",
-    answer_2: "a > title {...}",
-    answer_3: "a.title {...}",
-    answer_4: "a-title {...}",
+    question: "Wie wählst du alle Elemente vom Typ <div> mit dem Attribut title aus?",
+    answer_1: "div[title]{...}",
+    answer_2: "div > title {...}",
+    answer_3: "div.title {...}",
+    answer_4: "div-title {...}",
     right_answer: 1,
   },
   {
@@ -44,44 +43,56 @@ let questions = [
 
 let currentQuestion = 0;
 let rightQuestions = 0;
+let AUDIO_SUCCESS = new Audio('audio/audio-success.mp3');
+let AUDIO_WRONG = new Audio('audio/audio-wrong.mp3');
+
 
 function init() {
   document.getElementById("all-questions").innerHTML = questions.length;
-
+  updateProgressBar();
   showQuestion();
 }
 
 function showQuestion() {
-  // Show Endscreen
-  if (currentQuestion >= questions.length) {
+  if (gameIsOver()) {
+    showEndScreen();
+  } else {
+    updateProgressBar();
+    updateToNextQuestion();
+  }
+}
+
+function gameIsOver() {
+  return currentQuestion >= questions.length;
+}
+
+function updateProgressBar() {
+  let percent = currentQuestion / questions.length;
+  percent = Math.round(percent * 100);
+  document.getElementById("progress-bar").innerHTML = `${percent} %`;
+  document.getElementById("progress-bar").style = `width: ${percent}%`;
+}
+
+function updateToNextQuestion() {
+  let question = questions[currentQuestion];
+
+  document.getElementById("question-number").innerHTML = currentQuestion + 1;
+  document.getElementById("questiontext").innerHTML = question["question"];
+  document.getElementById("answer_1").innerHTML = question["answer_1"];
+  document.getElementById("answer_2").innerHTML = question["answer_2"];
+  document.getElementById("answer_3").innerHTML = question["answer_3"];
+  document.getElementById("answer_4").innerHTML = question["answer_4"];  
+}
+
+function showEndScreen() {
     document.getElementById("endScreen").style = "";
     document.getElementById("questionBody").style = "display: none";
 
     document.getElementById("amount-of-questions").innerHTML = questions.length;
-    document.getElementById("amount-of-right-questions").innerHTML =
-      rightQuestions;
+    document.getElementById("amount-of-right-questions").innerHTML = rightQuestions;
     document.getElementById("header-image").src = "./img/trophy.png";
-    document.getElementById("header-image").className = "endscreen-img";
-  } else {
-    // Show question
-
-    let percent = (currentQuestion + 1) / questions.length;
-    percent = Math.round(percent * 100);
-
-    document.getElementById("progress-bar").innerHTML = `${percent} %`;
-    document.getElementById("progress-bar").style = `width: ${percent}%`;
-
-    console.log("Fortschritt:", percent);
-
-    let question = questions[currentQuestion];
-
-    document.getElementById("question-number").innerHTML = currentQuestion + 1;
-    document.getElementById("questiontext").innerHTML = question["question"];
-    document.getElementById("answer_1").innerHTML = question["answer_1"];
-    document.getElementById("answer_2").innerHTML = question["answer_2"];
-    document.getElementById("answer_3").innerHTML = question["answer_3"];
-    document.getElementById("answer_4").innerHTML = question["answer_4"];
-  }
+  document.getElementById("header-image").className = "endscreen-img";
+  updateProgressBar();
 }
 
 function answer(selection) {
@@ -91,12 +102,12 @@ function answer(selection) {
 
   if (selectedQuestionNumber == question["right_answer"]) {
     document.getElementById(selection).parentNode.classList.add("bg-success");
+    AUDIO_SUCCESS.play();
     rightQuestions++;
   } else {
     document.getElementById(selection).parentNode.classList.add("bg-danger");
-    document
-      .getElementById(idOfRightAnswer)
-      .parentNode.classList.add("bg-success");
+    document.getElementById(idOfRightAnswer).parentNode.classList.add("bg-success");
+    AUDIO_WRONG.play();
   }
   document.getElementById("next-button").disabled = false;
 }
