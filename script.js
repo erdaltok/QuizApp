@@ -163,7 +163,7 @@ function resetAnswerButtons() {
 }
 
 function restartGame() {
-  document.getElementById("header-image").src = "./img/question-mark.jpg";
+  document.getElementById("header-image").src = "./img/question-mark-IV.jpg";
   document.getElementById("questionBody").style = "";
   document.getElementById("endScreen").style = "display: none";
   document.getElementById("header-image").className = "card-img-top";
